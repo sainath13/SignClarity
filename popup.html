@@ -22,7 +22,34 @@
     <div class="container center" id="loadingScreen" style="display: none;" >
     <div class="lds-ripple"><div></div><div></div></div>
     </div>
-    <div id="summaryPage">
+    <div id="welcomePage">
+        <article class="message">
+            <div class="message-body">
+                <p>
+                    👋 Welcome to <strong>SignClarity</strong>! 
+                </p>
+                <p> 🚀 Open a document to sign📝, and we'll supercharge your signing experience:</p>
+                    
+                    <p></p>
+                    <ol>
+                        <li>Summarize docs for quick understanding 📄📝</li>
+                        <li> crucial details automatically 🔍💼</li>
+                        <li> Ask questions about your doc, get instant answers 🗨️❓ </li>
+                        <li> Ensure thorough review with helpful tags 🏷️✅</li>
+                    </ol>
+                    <p></p>
+                <p>    Sign smarter with SignClarity! 📝✨</p>
+            </div>
+        </article>
+        <div class="content">
+        <blockquote>Make sure to click on SignClarity extension when you are on Dropbox Sign page</blockquote>
+    </div>
+        <div class="has-text-centered pb-3">
+            <button id="understood" class="button is-link">Understood</button>
+        </div>
+    </div>
+
+    <div id="summaryPage" style="display: none;">
         <article class="message">
             <div class="message-body">
                 <p id="summary">Analysing document</p>
@@ -32,6 +59,7 @@
             <button id="legalSimplificationButton" class="button is-link">Legal Language Simplification</button>
         </div>
     </div>
+
     <div id="legalSimplificationContent" class="container" style="display: none;">
         <div class="ml-2 mb-3">
             <div class="field is-grouped is-grouped-multiline" id="tagHolder">

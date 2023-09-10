@@ -107,3 +107,6 @@ button.addEventListener('click', () => {
         summaryPage.style.display = 'block'
     }
 });
+
+const understoodButton = document.getElementById('understood');
+understoodButton.addEventListener('click', () => {window.close();});
