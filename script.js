@@ -41,6 +41,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                 const tagLink = document.createElement('a');
                 tagLink.className = 'tag is-link';
                 tagLink.setAttribute('data-tag-details', text.title);
+                tagLink.setAttribute('data-description', text.detail);
                 tagLink.textContent = text.title;
                 tagDiv.appendChild(tagLink);
                 tagControl.appendChild(tagDiv);
@@ -54,11 +55,32 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                     console.log("cliked on a tag link");
                     content.style.display = 'none';
                     const tagDetails = tagLink.getAttribute('data-tag-details');
-                
-                    tagDescription.textContent = tagDetails;
-                    tagHolder.style.display = 'block'
-                    document.getElementById('tagDetails').style.display = 'block';
-                    document.getElementById('tagDescriptionName').text = tagDetails;
+                    const description = tagLink.getAttribute('data-description');
+                    loadingScreen.style.display = 'block';
+                    fetch('http://0.0.0.0:8000/context', { 
+                        method: 'POST', 
+                        body: JSON.stringify({ title: description }), 
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(detailSummary => {
+                        console.log('detail summary is after api call', detailSummary);
+                        loadingScreen.style.display = 'none';
+                        tagDescription.textContent = tagDetails;
+                        document.getElementById('tagDescriptionName').textContent = tagDetails;
+                        tagDescription.textContent = detailSummary.summary;
+                        document.getElementById('tagDetails').style.display = 'block';
+                    })
+                    .catch(error => {
+                        console.error('Error fetching detail summary:', error);
+                    });
+
+                    // tagDescription.textContent = tagDetails;
+                    // tagHolder.style.display = 'block'
+                    // document.getElementById('tagDetails').style.display = 'block';
+                    // document.getElementById('tagDescriptionName').text = tagDetails;
                     
                 });
             });

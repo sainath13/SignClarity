@@ -4,10 +4,20 @@ body {
     background-color: aliceblue;    
 }
 
+.full-width-input {
+    width: 100%; /* Make the input span the full width of its container (the body) */
+    box-sizing: border-box; /* Include padding and border within the width */
+    position: absolute; /* Position it at the bottom of the body */
+    bottom: 0;
+    left: 0;
+    border: 3px solid #555;
+}
+
+
 .center {
     /* margin: auto; */
     /* width: 50%; */
-    margin-top: 100px;
+    margin-top: 50px;
     /* border: 3px solid green; */
     padding: 150px;
 }
