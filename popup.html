@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloClarity</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" integrity="sha512-rqQltXRuHxtPWhktpAZxLHUVJ3Eombn3hvk9PHjV/N5DMUYnzKPC1i3ub0mEXgFzsaZNeJcoE0YHq0j/GFsdGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="#">
+            <img src="ClarityLogoNew.png" alt="Clarity : insights about your sign documents" width="112" height="28">
+          </a>
+        </div>
+    </nav>
+    <div id="summaryPage">
+        <article class="message">
+            <div class="message-body">
+                <p id="summary">Analysing document</p>
+            </div>
+        </article>
+        <div class="has-text-centered pb-3">
+            <button id="legalSimplificationButton" class="button is-link">Legal Language Simplification</button>
+        </div>
+    </div>
+    <div id="legalSimplificationContent" class="container" style="display: none;">
+        <div class="ml-2 mb-3">
+            <div class="field is-grouped is-grouped-multiline">
+                <div class="control">
+                  <div class="tags has-addons">
+                    <span class="tag is-dark">npm</span>
+                    <a class="tag is-link">Definition of Confidential Information</a>
+                  </div>
+                </div>
+              
+                <div class="control">
+                  <div class="tags has-addons">
+                    <a class="tag is-link">Exclusions from Confidential Information</a>
+                    <a class="tag is-delete"></a>
+                  </div>
+                </div>
+              
+                <div class="control">
+                  <div class="tags has-addons">
+                    <a class="tag is-link">Obligations of Receiving Party</a>
+                    <a class="tag is-delete"></a>
+                  </div>
+                </div>
+              
+                <div class="control">
+                  <div class="tags has-addons">
+                    <a class="tag is-link">Time Periods</a>
+                    <a class="tag is-delete"></a>
+                  </div>
+                </div>
+              
+                <div class="control">
+                  <div class="tags has-addons">
+                    <a class="tag is-link">Relationships</a>
+                    <a class="tag is-delete"></a>
+                  </div>
+                </div>
+              
+                <div class="control">
+                  <div class="tags has-addons">
+                    <a class="tag is-link">Severability</a>
+                    <a class="tag is-delete"></a>
+                  </div>
+                </div>
+              
+                <div class="control">
+                  <div class="tags has-addons">
+                    <a class="tag is-link">Waiver</a>
+                    <a class="tag is-delete"></a>
+                  </div>
+                </div>
+                <div class="control">
+                    <div class="tags has-addons">
+                      <a class="tag is-link">Integration</a>
+                      <a class="tag is-delete"></a>
+                    </div>
+                  </div>
+              </div>
+        </div>
+        <div class="has-text-centered pb-3">
+            <button id="legalSimplificationButton" class="button is-link">Mark as complete</button>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

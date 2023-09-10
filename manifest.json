@@ -1,0 +1,19 @@
+{
+    "name": "SignClarity",
+    "version": "0.0.1",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "128": "apple-touch-icon.png"
+    },
+    "permissions": [ 
+        "activeTab"
+    ],
+    "host_permissions":[
+        "https://*/*", 
+        "http://*/*",
+        "http://0.0.0.0:8000/*"
+      ]
+}
