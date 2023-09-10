@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HelloClarity</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" integrity="sha512-rqQltXRuHxtPWhktpAZxLHUVJ3Eombn3hvk9PHjV/N5DMUYnzKPC1i3ub0mEXgFzsaZNeJcoE0YHq0j/GFsdGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
 </head>
@@ -17,6 +18,9 @@
           </a>
         </div>
     </nav>
+    <div>
+    <div class="lds-ripple"><div></div><div></div></div>
+    </div>
     <div id="summaryPage">
         <article class="message">
             <div class="message-body">
@@ -27,24 +31,9 @@
             <button id="legalSimplificationButton" class="button is-link">Legal Language Simplification</button>
         </div>
     </div>
-    <div id="legalSimplificationContent" class="container">
+    <div id="legalSimplificationContent" class="container" style="display: none;">
         <div class="ml-2 mb-3">
             <div class="field is-grouped is-grouped-multiline" id="tagHolder">
-                <div class="control">
-                    <div class="tags has-addons">
-                        <a class="tag is-link" data-tag-details="Definition of Confidential Information">Definition of Confidential Information</a>
-                    </div>
-                </div>
-                <div class="control">
-                    <div class="tags has-addons">
-                        <a class="tag is-link" data-tag-details="Exclusions from Confidential Information">Exclusions from Confidential Information</a>
-                    </div>
-                </div>
-                <div class="control">
-                    <div class="tags has-addons">
-                        <a class="tag is-link" data-tag-details="Testing of Confidential Information">Testing of Confidential Information</a>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="has-text-centered pb-3">
@@ -52,12 +41,12 @@
         </div>
     </div>
 
-    <!-- Details container for tag descriptions -->
+
     <div id="tagDetails" class="container" style="display: none;">
         <div class="ml-2 mb-3">
             <div class="control">
                 <div class="tags has-addons">
-                    <a class="tag is-link">Definition of Confidential Information</a>
+                    <a class="tag is-link" id="tagDescriptionName"></a>
                     <a class="tag is-delete" id="returnToAllTags"></a>
                 </div>
             </div>
