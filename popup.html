@@ -45,14 +45,18 @@
     <div id="tagDetails" class="container" style="display: none;">
         <div class="ml-2 mb-3">
             <div class="control">
-                <div class="tags has-addons">
+                <div id="currentTag" class="tags has-addons">
                     <a class="tag is-link" id="tagDescriptionName"></a>
                     <a class="tag is-delete" id="returnToAllTags"></a>
                 </div>
             </div>
+            <div class="form-group">
+                <input id="userQuery" class="form-field" type="text" placeholder="Ask a query">
+                <span>Ask</span>
+            </div>
             <p id="tagDescription"></p>
+            <p id="tagOriginalText" style="display: none;"></p>
 
-            <input type="text" id="fullWidthInput" class="full-width-input" placeholder="Enter your text here">
         </div>
     </div>
     <script src="script.js"></script>

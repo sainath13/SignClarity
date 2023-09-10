@@ -11,7 +11,7 @@ const button = document.getElementById('legalSimplificationButton');
 const content = document.getElementById('legalSimplificationContent');
 const summaryPage = document.getElementById("summaryPage");
 const loadingScreen = document.getElementById('loadingScreen');
-
+var queryContext = ""
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let url = tabs[0].url;
     console.log(url)
@@ -59,7 +59,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                     loadingScreen.style.display = 'block';
                     fetch('http://0.0.0.0:8000/context', { 
                         method: 'POST', 
-                        body: JSON.stringify({ title: description }), 
+                        body: JSON.stringify({ title : description }), 
                         headers: {
                             'Content-Type': 'application/json',
                         },
@@ -71,16 +71,12 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                         tagDescription.textContent = tagDetails;
                         document.getElementById('tagDescriptionName').textContent = tagDetails;
                         tagDescription.textContent = detailSummary.summary;
+                        document.getElementById('tagOriginalText').textContent = detailSummary.originalData;
                         document.getElementById('tagDetails').style.display = 'block';
                     })
                     .catch(error => {
                         console.error('Error fetching detail summary:', error);
                     });
-
-                    // tagDescription.textContent = tagDetails;
-                    // tagHolder.style.display = 'block'
-                    // document.getElementById('tagDetails').style.display = 'block';
-                    // document.getElementById('tagDescriptionName').text = tagDetails;
                     
                 });
             });
@@ -93,11 +89,17 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
             });
     })
 });
-
-const tagDescription = document.getElementById('tagDescription');
-const returnToAllTags = document.getElementById('returnToAllTags');
-
-
+const inputElement = document.getElementById('userQuery');
+inputElement.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        const userInput = inputElement.value;
+        console.log("user input is ", userInput);
+        console.log(document.getElementById('tagOriginalText').textContent);
+        // Make the POST API call with the user's input
+        // makePostApiCall(userInput);
+    }
+});
 
 button.addEventListener('click', () => {
     if (content.style.display === 'none' || content.style.display === '') {
