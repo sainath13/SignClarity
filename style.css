@@ -3,6 +3,13 @@ body {
     height: 500px;
     background-color: aliceblue;    
 }
+
+#scrollable-content {
+    height: 450px;
+    overflow: auto;
+    /* background-color: blue; */
+}
+
 :root {
 
     --input-color: #99A3BA;
