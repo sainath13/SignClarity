@@ -1,17 +1,9 @@
-// fetch('https://icanhazdadjoke.com/slack')
-//     .then(data => data.json())
-//     .then(jokeData => {
-//         const jokeText = jokeData.attachments[0].text;
-//         const jokeElement = document.getElementById('jokeElement');
-
-//         jokeElement.innerHTML = jokeText;
-//     })
 const summaryElement = document.getElementById('summary');
 const button = document.getElementById('legalSimplificationButton');
 const content = document.getElementById('legalSimplificationContent');
 const summaryPage = document.getElementById("summaryPage");
 const loadingScreen = document.getElementById('loadingScreen');
-var queryContext = ""
+
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let url = tabs[0].url;
     console.log(url)
@@ -57,6 +49,11 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                     const tagDetails = tagLink.getAttribute('data-tag-details');
                     const description = tagLink.getAttribute('data-description');
                     loadingScreen.style.display = 'block';
+                    // tagLink.parentElement.parentElement.remove();
+                    const spanElement = document.createElement('span');
+                    spanElement.className = 'tag is-dark';
+                    spanElement.textContent = 'Done'
+                    tagLink.parentElement.appendChild(spanElement);
                     fetch('http://0.0.0.0:8000/context', { 
                         method: 'POST', 
                         body: JSON.stringify({ title : description }), 
