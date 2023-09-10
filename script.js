@@ -31,6 +31,37 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     
 });
 
+const tagLinks = document.querySelectorAll('.tag.is-link');
+const tagDescription = document.getElementById('tagDescription');
+const returnToAllTags = document.getElementById('returnToAllTags');
+
+tagLinks.forEach(tagLink => {
+    tagLink.addEventListener('click', () => {
+        content.style.display = 'none';
+        const tagDetails = tagLink.getAttribute('data-tag-details');
+        // Set the tag description content
+        tagDescription.textContent = tagDetails;
+        // Show the tag details and the "Return to All Tags" button
+        document.getElementById('tagDetails').style.display = 'block';
+        // returnToAllTags.style.display = 'block';
+        // Hide the delete button for the clicked tag
+        // tagLink.nextElementSibling.style.display = 'none';
+        
+    });
+});
+
+// JavaScript for returning to all tags
+returnToAllTags.addEventListener('click', () => {
+    // Show all tags
+    // tagLinks.forEach(tag => tag.nextElementSibling.style.display = 'block');
+    // Hide the tag details and the "Return to All Tags" button
+    // document.getElementById('tagDetails').style.display = 'none';
+    // returnToAllTags.style.display = 'none';
+    content.style.display = 'block';
+    document.getElementById('tagDetails').style.display = 'none';
+    
+});
+
 button.addEventListener('click', () => {
     if (content.style.display === 'none' || content.style.display === '') {
         content.style.display = 'block';
