@@ -3,20 +3,10 @@ const button = document.getElementById('legalSimplificationButton');
 const content = document.getElementById('legalSimplificationContent');
 const summaryPage = document.getElementById("summaryPage");
 const loadingScreen = document.getElementById('loadingScreen');
+const welcomePage = document.getElementById('welcomePage');
 
-chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
-    let url = tabs[0].url;
-    console.log(url)
-
-    const understoodButton = document.getElementById('understood');
-    if(url.startsWith('https://app.hellosign.com/sign')){
-        console.log("you are on correct page")
-        understoodButton.textContent = "Sign Clarity"
-    }
-    else{
-        understoodButton.addEventListener('click', () => {window.close();});
-    }
-    loadingScreen.style.display = 'block';
+function summaryPageHandler(){
+    loadingScreen.style.display = 'block'
     fetch('http://0.0.0.0:8000/default/0a9ad55670de6a3efc65d855ac9ed885b5198997')
         .then(data => data.json())
         .then(result => {
@@ -24,6 +14,8 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
             summaryElement.innerHTML = summary;
 
             loadingScreen.style.display = 'none';
+            welcomePage.style.display = 'none';
+            summaryPage.style.display = 'block';
             const tagHolder = document.getElementById('tagHolder');
             result.originalTexts.forEach(text => {
                 console.log("creating tag for {}", text.title);
@@ -52,7 +44,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                     loadingScreen.style.display = 'block';
                     // tagLink.parentElement.parentElement.remove();
                     const spanElement = document.createElement('span');
-                    spanElement.className = 'tag is-dark';
+                    spanElement.className = 'tag is-success';
                     spanElement.textContent = 'Done'
                     tagLink.parentElement.appendChild(spanElement);
                     fetch('http://0.0.0.0:8000/context', { 
@@ -86,7 +78,25 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                 
             });
     })
-});
+
+}
+chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+    let url = tabs[0].url;
+    console.log(url)
+
+    const understoodButton = document.getElementById('understood');
+    if(url.startsWith('https://app.hellosign.com/sign')){
+        console.log("you are on correct page")
+        understoodButton.textContent = "Analyse with Sign Clarity"
+        understoodButton.addEventListener('click', () => {
+            summaryPageHandler()
+        });
+        
+    }
+    else{
+        understoodButton.addEventListener('click', () => {window.close();});
+    }
+});    
 const inputElement = document.getElementById('userQuery');
 inputElement.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
