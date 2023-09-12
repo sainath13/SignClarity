@@ -7,13 +7,14 @@ const loadingScreen = document.getElementById('loadingScreen');
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let url = tabs[0].url;
     console.log(url)
-    if(url.startsWith('https://app.hellosign.com/')){
-        const summaryElement = document.getElementById('summary');
-        summaryElement.innerHTML = "YESSSSS"
+
+    const understoodButton = document.getElementById('understood');
+    if(url.startsWith('https://app.hellosign.com/sign')){
+        console.log("you are on correct page")
+        understoodButton.textContent = "Sign Clarity"
     }
     else{
-        const summaryElement = document.getElementById('summary');
-        summaryElement.innerHTML = "NOOOOOOOO"
+        understoodButton.addEventListener('click', () => {window.close();});
     }
     loadingScreen.style.display = 'block';
     fetch('http://0.0.0.0:8000/default/0a9ad55670de6a3efc65d855ac9ed885b5198997')
@@ -107,6 +108,3 @@ button.addEventListener('click', () => {
         summaryPage.style.display = 'block'
     }
 });
-
-const understoodButton = document.getElementById('understood');
-understoodButton.addEventListener('click', () => {window.close();});
