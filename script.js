@@ -87,6 +87,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     const understoodButton = document.getElementById('understood');
     if(url.startsWith('https://app.hellosign.com/sign')){
         console.log("you are on correct page")
+        document.getElementById('letsGoText').textContent = "Harness the power of AI for document understanding and simplification!"
         understoodButton.textContent = "Analyse with Sign Clarity"
         understoodButton.addEventListener('click', () => {
             summaryPageHandler()
