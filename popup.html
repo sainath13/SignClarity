@@ -17,8 +17,26 @@
             <img src="ClarityLogoNew.png" alt="Clarity : insights about your sign documents" width="112" height="28">
           </a>
         </div>
-    </nav>
+    </nav>  
     <div id="scrollable-content">
+        <div id="trophyPage" style="display: none;">
+            <div class="container">
+            <iframe style="margin-left: 70px;" width="250" height="250" src="https://lottie.host/?file=993ee885-187a-4319-a5cd-c6d8dcecb144/kf3BaNEzau.json"></iframe>
+            </div>
+        <div class="content">
+            <blockquote> 
+                Congratulations! You have thoroughly reviewed the document, ensuring it meets your requirements 
+                <i class="far fa-check-circle"></i>
+            </blockquote>
+        </div>
+        <div class="has-text-centered pb-3">
+            <button id="completed" class="button is-link">
+                <span class="icon">
+                    <i class="fas fa-signature"></i>
+                  </span>
+                  <span>Sign now!</span></button>
+        </div>
+    </div>
     <div class="container center" id="loadingScreen" style="display: none;" >
     <div class="lds-ripple"><div></div><div></div></div>
     </div>
@@ -70,12 +88,13 @@
     </div>
 
     <div id="legalSimplificationContent" class="container" style="display: none;">
+        <iframe src="https://lottie.host/?file=a6537ae9-9240-47ba-8bdf-0a04eb29f4fb/sor7bvCKP3.json"></iframe>
         <div class="ml-2 mb-3">
             <div class="field is-grouped is-grouped-multiline" id="tagHolder">
             </div>
         </div>
         <div class="has-text-centered pb-3">
-            <button id="legalSimplificationButton" class="button is-link">Mark as complete</button>
+            <button id="markAsCompleteButton" class="button is-link">Mark as reviewed</button>
         </div>
     </div>
 

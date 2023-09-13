@@ -4,6 +4,7 @@ const content = document.getElementById('legalSimplificationContent');
 const summaryPage = document.getElementById("summaryPage");
 const loadingScreen = document.getElementById('loadingScreen');
 const welcomePage = document.getElementById('welcomePage');
+const completedButton = document.getElementById('completed')
 
 function summaryPageHandler(){
     loadingScreen.style.display = 'block'
@@ -77,6 +78,13 @@ function summaryPageHandler(){
                 document.getElementById('tagDetails').style.display = 'none';
                 
             });
+            const markAsCompleteButton = document.getElementById('markAsCompleteButton');
+            markAsCompleteButton.addEventListener('click', () => {
+                console.log("clicked on mark as complete button");
+                document.getElementById('trophyPage').style.display = 'block';
+                content.style.display = 'none';
+            
+            });
     })
 
 }
@@ -119,3 +127,7 @@ button.addEventListener('click', () => {
         summaryPage.style.display = 'block'
     }
 });
+completedButton.addEventListener('click', () => {
+   window.close();
+});
+
