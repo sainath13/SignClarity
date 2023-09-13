@@ -6,7 +6,7 @@
         "default_popup": "popup.html"
     },
     "icons": {
-        "128": "apple-touch-icon.png"
+        "128": "SignClarityLogo.png"
     },
     "permissions": [ 
         "activeTab"
