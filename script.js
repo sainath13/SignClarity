@@ -6,10 +6,11 @@ const loadingScreen = document.getElementById('loadingScreen');
 const welcomePage = document.getElementById('welcomePage');
 const completedButton = document.getElementById('completed')
 
-function summaryPageHandler(){
+function summaryPageHandler(signature_id){
     loadingScreen.style.display = 'block'
     welcomePage.style.display = 'none'
-    fetch('http://0.0.0.0:8000/default/0a9ad55670de6a3efc65d855ac9ed885b5198997')
+    url = "http://0.0.0.0:8000/default/" + signature_id;
+    fetch(url)
         .then(data => data.json())
         .then(result => {
             const summary = result.summary;
@@ -77,6 +78,7 @@ function summaryPageHandler(){
                 console.log("cliked on return all");
                 content.style.display = 'block';
                 document.getElementById('tagDetails').style.display = 'none';
+                userQuery.value = ""
                 
             });
             const markAsCompleteButton = document.getElementById('markAsCompleteButton');
@@ -92,14 +94,35 @@ function summaryPageHandler(){
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let url = tabs[0].url;
     console.log(url)
-
+    var extracted_signature_id = "";
     const understoodButton = document.getElementById('understood');
     if(url.startsWith('https://app.hellosign.com/sign')){
         console.log("you are on correct page")
+        // Split the URL using "/"
+        const parts = url.split("/");
+        // Find the index of "sign/"
+        const signIndex = parts.findIndex(part => part === "sign");
+        // Check if "sign/" exists in the URL
+        if (signIndex !== -1) {
+            // Get the part after "sign/"
+            const signature_id = parts[signIndex + 1];
+        
+            // Check if the extracted part is at least 40 characters long
+            if (signature_id.length >= 40) {
+                // Store the 40 characters in the variable
+                extracted_signature_id = signature_id.slice(0, 40);
+                console.log("Extracted Signature ID:", extracted_signature_id);
+            } else {
+                console.log("Signature ID is less than 40 characters.");
+            }
+        } else {
+            console.log("URL does not contain 'sign/'");
+        }
+
         document.getElementById('letsGoText').textContent = "Harness the power of AI for document understanding and simplification!"
         understoodButton.textContent = "Analyse with Sign Clarity"
         understoodButton.addEventListener('click', () => {
-            summaryPageHandler()
+            summaryPageHandler(extracted_signature_id)
         });
         
     }
