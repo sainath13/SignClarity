@@ -52,7 +52,7 @@ function summaryPageHandler(signature_id){
                     tagLink.parentElement.appendChild(spanElement);
                     fetch('http://0.0.0.0:8000/context', { 
                         method: 'POST', 
-                        body: JSON.stringify({ title : description }), 
+                        body: JSON.stringify({ description : description }), 
                         headers: {
                             'Content-Type': 'application/json',
                         },
