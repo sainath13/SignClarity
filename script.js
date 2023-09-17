@@ -8,6 +8,7 @@ const completedButton = document.getElementById('completed')
 
 function summaryPageHandler(){
     loadingScreen.style.display = 'block'
+    welcomePage.style.display = 'none'
     fetch('http://0.0.0.0:8000/default/0a9ad55670de6a3efc65d855ac9ed885b5198997')
         .then(data => data.json())
         .then(result => {
@@ -112,11 +113,28 @@ inputElement.addEventListener('keydown', function(event) {
         event.preventDefault();
         const userInput = inputElement.value;
         console.log("user input is ", userInput);
-        console.log(document.getElementById('tagOriginalText').textContent);
-        // Make the POST API call with the user's input
-        // makePostApiCall(userInput);
+        const chatInfo = document.getElementById('tagOriginalText').textContent;
+        document.getElementById('chatAnimationHolder').style.display = 'block'
+        tagDescription.style.display = 'none'
+        fetch('http://0.0.0.0:8000/chat', { 
+                        method: 'POST', 
+                        body: JSON.stringify({ question : userInput, information : chatInfo }), 
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+            })
+            .then(response => response.json())
+            .then(answerDetail => {
+                console.log("call is successfull");
+                const answer = answerDetail.answer;
+                console.log(answer);
+                tagDescription.textContent = answer;
+                chatAnimationHolder.style.display = 'none';
+                tagDescription.style.display = 'block'
+            });
     }
 });
+
 
 button.addEventListener('click', () => {
     if (content.style.display === 'none' || content.style.display === '') {
